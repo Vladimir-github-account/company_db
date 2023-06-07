@@ -1,13 +1,13 @@
 require('dotenv').config();
-const {DB_USER, HOST, DATABASE, PASSWORD, PORT} = process.env;
+const {DB_USER, DB_HOST, DATABASE, DB_USER_PASSWORD, DB_PORT} = process.env;
 const config = {
   development: {
     username: DB_USER,
-    password: PASSWORD,
+    password: DB_USER_PASSWORD,
     database: DATABASE,
-    host: HOST,
+    host: DB_HOST,
     dialect: 'postgres',
-    port: PORT,
+    port: DB_PORT,
     migrationStorage: 'json',
     seederStorage: 'json'
   },
