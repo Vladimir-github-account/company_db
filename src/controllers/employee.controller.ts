@@ -1,14 +1,11 @@
-import { Response, Request } from 'express';
-import sequelize             from '../db/sequelize';
-import { QueryTypes }        from 'sequelize';
+import { Response }      from 'express';
+import sequelize         from '../db/sequelize';
+import { QueryTypes }    from 'sequelize';
+import { ITokenRequest } from '../types';
 
-export const getEmployees = async (req: Request, res: Response) => {
+export const getEmployees = async (req: ITokenRequest, res: Response) => {
 	try {
-		const {
-			query: {
-				id
-			}
-		} = req;
+		const { id } = req.user;
 		const employees = await sequelize.query(`
       WITH RECURSIVE empdata AS ((SELECT id, name, position, "bossId", 1 AS level
                                   FROM "Employees"

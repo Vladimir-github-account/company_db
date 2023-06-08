@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import {
-	getEmployees
-}                 from '../controllers/employee.controller';
+import { RequestHandler, Router } from 'express';
+import { getEmployees }               from '../controllers/employee.controller';
+import { signIn, signUp }             from '../controllers/auth.controller';
+import { checkPassword, verifyToken } from '../middlewares/auth';
 
 export const employeesRouter = Router();
 
-employeesRouter.get('', getEmployees);
+employeesRouter.post('/register', checkPassword, signUp);
 
-// employeeRouter.post('/register', checkEmail, checkPassword, signUp);
-//
-// employeeRouter.post('/login', signIn);
+employeesRouter.post('/login', signIn);
+
+employeesRouter.get('', verifyToken, getEmployees as RequestHandler);
