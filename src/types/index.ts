@@ -7,4 +7,5 @@ export interface ITokenUser {
 
 export interface ITokenRequest extends Express.Request {
 	user: ITokenUser;
+	body: any;
 }

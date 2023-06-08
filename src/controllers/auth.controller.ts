@@ -1,5 +1,5 @@
-import { Request, Response }       from 'express';
-import Employee from '../db/models/Employee';
+import { Request, Response } from 'express';
+import Employee              from '../db/models/Employee';
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
